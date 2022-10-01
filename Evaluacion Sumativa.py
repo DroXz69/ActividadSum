@@ -1,0 +1,185 @@
+import time
+import os
+import math
+
+os.system("cls")
+
+def distancia(a, b, aa, bb):
+    radio = 6371
+    # Convertimos las cordenadas en radianes
+    lat = (aa - a) * (math.pi / 180)
+    log = (bb - b) * (math.pi / 180)
+    # Punto 1
+    a = (math.sin(lat / 2) * math.sin(lat / 2)) + (math.cos(a * (math.pi / 180)) * (math.cos(aa * (math.pi / 180)))) * (math.sin(log / 2) * math.sin(log / 2))
+    # Punto 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    # Distancia total
+    d = radio*c
+    return d
+
+i=0 # Velocidad Del Vehiculo
+tarifa = 220 * 1.8
+resultado = 0
+print('''
+    ****************************************
+    ****** Hola Bienvenido a UbixLite ******
+    ****************************************''')
+while (resultado < 4):
+    print('''
+    ****************************************
+    *** Precione 1 para Registrarse      ***
+    *** Precione 2 para Iniciar Sesion   ***
+    *** Precione 3 para Comenzar Carrera ***
+    *** Precione 4 para Salir            ***
+    ****************************************''')
+    resultado = int(input("Ingrese el numero de la opcion que desea: "))
+
+    #################################################################################
+
+    if resultado == 1: # Restrarse
+        os.system("cls") ## Limpia la pantalla
+        print("Ingrese su nombre y apellido")
+        nombre = str(input("Nombre: "))
+        print("Ingrese su correo electronico")
+        correo = str(input("Correo: "))
+        print("Ingrese Nombre de usuario")
+        username = str(input("Usuario: "))
+        print("Ingrese su contraseña")
+        password = str(input("Contraseña: "))
+        print("Ingrese numero telefonico")
+        telefono = int(input("Telefono: "))
+        print("Ingrese su fecha de nacimiento")
+        print("xx/xx/xxxx")
+        fecha = str(input("Fecha de nacimiento: "))
+        print("Ingrese su genero") 
+        genero = str(input("Genero: "))
+        time.sleep(2) ## Tiempo de espera 2 segundos
+        os.system("cls") ## Limpia la pantalla
+    #################################################################################
+
+    if resultado == 2: # Iniciar Sesion
+        os.system("cls") ## Limpia la pantalla
+        print("Ingrese su nombre de usuario")
+        usuario = str(input("Usuario: "))
+        print("Ingrese su contraseña")
+        contraseña = str(input("Contraseña: "))
+        while usuario == username and contraseña == password:
+            print("Bienvenido a UbixLite", nombre)
+            time.sleep(2) ## Tiempo de espera 2 segundos
+            os.system("cls") ## Limpia la pantalla
+            break
+
+    #################################################################################
+    
+    if resultado == 3: # Comenzar carrera
+
+
+        while True:
+            os.system("cls") ## Limpia la pantalla
+            print('''
+            **************************************
+            ********* Menu de carreras ***********
+            **************************************
+            1) Ingresar ubicacion GPS, Latitud
+            2) Ingresar ubicacion GPS, Longitud
+            3) Encender Vehiculo
+            4) Acelerar Vehiculo
+            5) Apagar Vehiculo
+            6) Girar Vehiculo
+            0) Finalizar Carrera
+            **************************************''')
+            opc = input("    Escoja una Opcion: ")
+            print("    **************************************")
+            
+            #a = float #latitud actual
+            #aa = float #latitud destino
+            #b = float #longitud actual
+            #bb = float #longitud destino
+            c = str # Texto
+            d = str # Texto
+            e = str # Texto
+            f = str # Izquierda o Derecha
+
+
+
+            if opc == "1":
+                os.system("cls") ## Limpia la pantalla
+                print("Ingrese la Latitud")
+                a = float(input("Latitud Actual: "))
+                aa = float(input("Latitud Destino: "))
+                time.sleep(1) ## Tiempo de espera 1 segundos
+                os.system("cls") ## Limpia la pantalla
+
+            elif opc == "2":
+                os.system("cls") ## Limpia la pantalla
+                print("Ingrese la Longitud")
+                b = float(input("Longitud Actual: "))
+                bb = float(input("Longitud Destino: "))
+                time.sleep(1) ## Tiempo de espera 1 segundos
+                os.system("cls") ## Limpia la pantalla
+                
+
+
+            elif opc == "3":
+                os.system("cls") ## Limpia la pantalla
+                time.sleep(1) # Tiempo de espera 1 segundo
+                print("Encendiendo Vehiculo")
+                time.sleep(2) # Tiempo de espera 2 segundos
+                os.system("cls") ## Limpia la pantalla
+
+            elif opc == "4":         
+                os.system("cls") ## Limpia la pantalla
+                print("Acelerando Vehiculo")
+                print("Su Velocidad actual es de: ", i, "km/h")
+                i = i + 10 # Incremento de 10 en 10
+                time.sleep(2) # Tiempo de espera 2 segundos
+                os.system("cls") ## Limpia la pantalla
+
+            elif opc == "5":
+                os.system("cls") ## Limpia la pantalla
+                time.sleep(1) # Tiempo de espera 1 segundo
+                print("Apagando Vehiculo")
+                time.sleep(2) # Tiempo de espera 2 segundos
+                os.system("cls") ## Limpia la pantalla
+
+            elif opc == "6":
+                os.system("cls") ## Limpia la pantalla
+                print("¿Hacia donde desea girar su vehiculo?")
+                print("Izquierda o Derecha")
+                f = input("Giro a: ")
+                os.system("cls") ## Limpia la pantalla
+                time.sleep(1) # Tiempo de espera 1 segundo
+                print("Girando a la ", f)
+                time.sleep(2) # Tiempo de espera 2 segundos
+                os.system("cls") ## Limpia la pantalla
+
+            elif opc == "0": 
+                time.sleep(2) # Tiempo de espera 2 segundo
+                os.system("cls") ## Limpia la pantalla
+                print("**********************************************")
+                print("************ Finalizando Carrera *************")
+                print("**********************************************")
+                print ("La hora es: ", time.strftime("%H:%M:%S"))
+                print ("La fecha es: ", time.strftime("%d/%m/%y"))
+                print ("La Ubicacion de destino es: ",aa,bb) # distancia entre 2 puntos
+                print ("Hemos recorrido: ", round(distancia(a,b,aa,bb),2), "km/h")
+                print ("El valor a pagar es: $", round(distancia(a,b,aa,bb) * tarifa)) #tarifa * n kilometro
+                print("**********************************************")
+                print("****** Gracias Por Confiar en UbixLite *******")
+                print("**********************************************")
+                time.sleep(20) # Tiempo de espera 20 segundo
+                exit()
+
+            else:
+                os.system("cls") ## Limpia la pantalla
+                print("Opcion no valida")
+                time.sleep(2) # Tiempo de espera 2 segundo
+                os.system("cls") ## Limpia la pantalla
+
+    #################################################################################
+
+    if resultado == 4: # Terminar Programa
+        print("Gracias por usar el programa")
+        exit()
+
+    #################################################################################
